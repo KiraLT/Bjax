@@ -1,74 +1,103 @@
 # Welcome to Bjax 1.0.0
 
-## About
-
 Ajax link system for modern website. Convert any link in your page to ajax link.
+
+## Features
+
+* Converts any link to ajax link.
+* Loads whole page with ajax.
+* Loads part of page with ajax.
 
 ## Usage
 
-```
-$('[selector]').bjax(options);
-```
+Download the latest version: https://github.com/KiraLT/Bjax/releases
 
-### Binding
+Link to the JS file:
 
-#### Bind every link
-
-*JavaScript*
-
-```
-$('a').bjax();
+```html
+<script src="bjax.min.js" type="text/javascript"></script>
 ```
 
-*HTML*
+Add the CSS file (or append contents to your own stylesheet):
 
+```html
+<link href="bjax.min.css" rel="stylesheet" type="text/css" />
 ```
-<a href="/page">Page</page>
-```
 
-#### Bind by data-bjax attribute
+To initialize:
 
-*JavaScript*
-
-```
+```javascript
+// default
 $('[data-bjax]').bjax();
+
+// or with custom settings
+$('[data-bjax]').bjax({
+    replace: true
+});
 ```
 
-*HTML*
+## Settings
 
+Key | Default | Values | Description
+--- | --- | --- | ---
+url_attribute | data-href or href | String | URL attribute 
+url | undefined | String | custom url
+replace_attribute | data-replace | String | Replace attribute
+replace | true | Boolean | Change page URL after bjax load
+element_attribute | data-el | String | Element attribute
+element | html | String | Element to load
+target_attribute | data-target | String | Target attribute
+target | html | String | Load target
+
+## API `Bjax`
+
+You can instantiate the Bjax also through a classic way:
+
+```javascript
+// Collect settings from element
+new Bjax($('[data-bjax']));
+
+// Set settings manually
+new Bjax({
+  'target': '#target',
+  'element': '#element',
+  'url': '/page'
+});
+
+// Mixed
+new Bjax($('[data-bjax']), {
+  'target': '#target',
+  'element': '#element'
+});
 ```
-<a href="/page" data-bjax>Page</page>
+
+Bind bjax manually:
+
+```javascript
+$('[data-bjax]').on('click', function(e){
+    new Bjax(this);
+    e.preventDefault();
+});
+
+// Live bind
+$(document).on('click', '[data-bjax]', function(e){
+    new Bjax(this);
+    e.preventDefault();
+});
 ```
 
-#### Use cases
+## Events
 
-### Load whole new page 
+Events are fired on the bjax element. You can bind events like this:
 
-```
-<a href="/page" data-bjax>Page</page>
-```
-
-### Load a part of page 
-
-```
-<a href="/page" data-target="#content_target" data-element="#content_element">Page</page>
+```javascript
+$(document).on('bjax_load', function () {
+    // Do something
+});
 ```
 
-### Load a part of page without changing current url 
+### Available events
 
-```
-<a href="/page" data-target="#content_target" data-element="#content_element" data-replace="false">Page</page>
-```
-
-### Options
-
-Option | Default | Description
---- | --- | ---
-url_attribute | data-href or href | URL attribute
-url | undefined | custom url
-replace_attribute | data-replace | Replace attribute
-replace | true | Change page URL after bjax load
-element_attribute | data-el | Element attribute
-element | html | Element to load
-target_attribute | data-target | Target attribute
-target | html | Load target
+| Key | Description |
+| --- | --- |
+| bjax_load | Fired when the bjax finishes loading |
