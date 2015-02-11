@@ -8,6 +8,8 @@ Ajax link system for modern website. Convert any link in your page to ajax link.
 * Loads whole page with ajax.
 * Loads part of page with ajax.
 
+Demo online: http://bjax.eu5.org/demo/
+
 ## Usage
 
 Download the latest version: https://github.com/KiraLT/Bjax/releases
