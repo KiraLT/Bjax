@@ -87,19 +87,3 @@ $(document).on('click', '[data-bjax]', function(e){
     e.preventDefault();
 });
 ```
-
-## Events
-
-Events are fired on the bjax element. You can bind events like this:
-
-```javascript
-$(document).on('bjax_load', function () {
-    // Do something
-});
-```
-
-### Available events
-
-| Key | Description |
-| --- | --- |
-| bjax_load | Fired when the bjax finishes loading |
