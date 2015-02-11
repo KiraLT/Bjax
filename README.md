@@ -10,7 +10,7 @@ Demo online: http://bjax.eu5.org/demo/
 * Loads whole page with ajax.
 * Loads part of page with ajax.
 
-## Requirement
+## Requirements
 
 * jQuery.
 * HTML5 browser.
