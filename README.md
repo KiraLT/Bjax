@@ -2,7 +2,7 @@
 
 Ajax link system for modern website. Convert any link in your page to ajax link.
 
-Demo online: http://bjax.eu5.org/demo/
+Demo online: http://bjax.6te.net/demo/
 
 ## Features
 
