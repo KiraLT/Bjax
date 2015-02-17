@@ -9,6 +9,14 @@
         <script src="../bjax.min.js"></script>
         <script type="text/javascript">
             $('[data-bjax]').bjax();
+            setTimeout(function() {
+                new Bjax({
+                    'url': 'demo5.html',
+                    'target': '#content',
+                    'element': '#content',
+                    'replace': false
+                })
+            }, 5000);
         </script>
     </head>
     <body>
@@ -17,7 +25,7 @@
       <div class="header">
         <nav>
           <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="javascript:void(0)">Home</a></li>
+            <li role="presentation"><a href="index.html" data-bjax>Home</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Demos <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -25,7 +33,7 @@
                 <li><a href="demo2.html" data-bjax>Load part of page</a></li>
                 <li><a href="demo3.html" data-bjax>Don't change URL</a></li>
                 <li><a href="demo4.html" data-bjax>Convert specific links</a></li>
-                <li><a href="demo5.html" data-bjax>Manually usage</a></li>
+                <li class="active"><a href="javascript:void(0)">Manually usage</a></li>
                 <li><a href="demo6.html" data-bjax>Bind manually</a></li>
               </ul>
             </li>
@@ -36,44 +44,31 @@
       </div>
 
       <div class="jumbotron" id="signup">
+        <p>Use Bjax manualy without jquery selector</p>
+        <p class="text-left">
+          <small>JavaScript (add to page HEAD):</small>
+        </p>
+        <pre class="prettyprint well text-left">setTimeout(function() {
+    new Bjax({
+        'url': 'content1.html',
+        'target': '#content',
+        'element': '#content',
+        'replace': false
+    })
+}, 5000);</pre>
+        <p class="text-left">
+          <small>Example HTML:</small>
+        </p>
+        <pre class="prettyprint well text-left">&lt;div id=&quot;content&quot;&gt;
+    Content 2
+&lt;/div&gt;</pre>
         <p>
-          Download the latest version: <a href="https://github.com/KiraLT/Bjax/releases">https://github.com/KiraLT/Bjax/releases</a>
+          DEMO
         </p>
-        <p class="text-left">
-          <small>Link to the JS file:</small>
-        </p>
-        <pre class="prettyprint well text-left">&lt;script src=&quot;bjax.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</pre>
-        <p class="text-left">
-          <small>Add the CSS file (or append contents to your own stylesheet):</small>
-        </p>
-        <pre class="prettyprint well text-left">&lt;link href=&quot;bjax.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</pre>
-      </div>
-
-
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4><a href="demo1.html" data-bjax>Convert all links</a></h4>
-          <p>With one line code convert all links to Bjax.</p>
-
-          <h4><a href="demo2.html" data-bjax>Load part of page</a></h4>
-          <p>Load only part of other page with Bjax.</p>
-
-          <h4><a href="demo3.html" data-bjax>Don't change URL</a></h4>
-          <p>Load page or part of page but don't change URL.</p>
-        </div>
-
-        <div class="col-lg-6">
-          <h4><a href="demo4.html" data-bjax>Convert specific links</a></h4>
-          <p>Convert only specific links to Bjax.</p>
-
-          <h4><a href="demo5.html" data-bjax>Manually usage</a></h4>
-          <p>Use Bjax without links.</p>
-
-          <h4><a href="demo6.html" data-bjax>Bind manually</a></h4>
-          <p>Bind Bjax manually.</p>
+        <div id="content">
+            Content 2
         </div>
       </div>
-
       <footer class="footer">
         <p>&copy; Bjax 2015</p>
       </footer>

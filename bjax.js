@@ -96,6 +96,7 @@
         var self = this;
         self.loader.update(100, 500);
         jQuery.ajax({
+            type: 'GET',
             url: this.data['url'],
             success: function(content) {
                 self.loader.update(100, 300, function() {
