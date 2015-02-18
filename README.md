@@ -2,7 +2,7 @@
 
 Ajax link system for modern website. Convert any link in your page to ajax link.
 
-Demo online: http://bjax.eu5.org/demo/
+Demo online: http://bjax.6te.net/demo/
 
 ## Features
 
@@ -34,12 +34,16 @@ Add the CSS file (or append contents to your own stylesheet):
 To initialize:
 
 ```javascript
-// default
+// bind on data-bjax attrobites (recommended)
 $('[data-bjax]').bjax();
+
+// bind on each link
+$('a').bjax();
 
 // or with custom settings
 $('[data-bjax]').bjax({
-    replace: true
+    target: '#content',
+    element: '#content'
 });
 ```
 
@@ -55,6 +59,50 @@ element_attribute | data-el | String | Element attribute
 element | html | String | Element to load
 target_attribute | data-target | String | Target attribute
 target | html | String | Load target
+
+## HTML attributes
+
+`data-target`- jQuery selector
+
+Load content to specified target.
+
+**Example HTML:**
+
+```html
+<div id="content">
+  <a href="content.html" data-target="#content" data-bjax>Load here</a>
+</div>
+```
+
+`data-el`- jQuery selector
+
+Load only specified element.
+
+**Example HTML:**
+
+```html
+<a href="content.html" data-el="#content" data-bjax>Load here</a>
+```
+
+`data-replace`- boolean
+
+Change URL after load dynamicaly.
+
+**Example HTML:**
+
+```html
+<a href="home.html" data-replace="false" data-bjax>Home</a>
+```
+
+`data-url`- string
+
+Custom load URL. Will be used instead of href attribute.
+
+**Example HTML:**
+
+```html
+<button data-url="home.html"  data-bjax>Home</button>
+```
 
 ## API `Bjax`
 
@@ -91,4 +139,10 @@ $(document).on('click', '[data-bjax]', function(e){
     new Bjax(this);
     e.preventDefault();
 });
+```
+
+Onclick attribute
+
+```html
+<a href="content.html" onclick="new Bjax(this); return false;">Link</a>
 ```
