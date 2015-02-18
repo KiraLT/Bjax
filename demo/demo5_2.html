@@ -3,23 +3,27 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css">
+        <link rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css">
         <link rel="stylesheet" href="../bjax.min.css">
         <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js" type="text/javascript"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script src="../bjax.min.js"></script>
         <script type="text/javascript">
+          $(document).ready(function() {
             $('[data-bjax]').bjax();
             setTimeout(function() {
                 new Bjax({
-                    'url': 'demo5.html',
+                    'url': 'demo5_2.html',
                     'target': '#content',
-                    'element': '#content',
-                    'replace': false
+                    'element': '#content'
                 })
             }, 5000);
+            prettyPrint();
+          });
         </script>
     </head>
-    <body>
 
     <div class="container">
       <div class="header">
