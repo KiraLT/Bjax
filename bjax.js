@@ -37,7 +37,7 @@
         this.execute();
     };
 
-    Bjax.VERSION = '1.0.0';
+    Bjax.VERSION = '1.0.1';
     Bjax.defaults = {
         'url_attribute': [
             'data-href',
@@ -48,7 +48,7 @@
         'element_attribute': 'data-el',
         'element': 'html',
         'target_attribute': 'data-target',
-        'target': 'html'
+        'target': 'html',
     };
 
     Bjax.prototype.loadElement = function (element) {
@@ -102,6 +102,7 @@
                 self.loader.update(100, 300, function() {
                     self.render(content);
                     self.updateUrl();
+                    document.title = $(content).filter('title').text();
                 });
             },
             error: function() {
@@ -113,10 +114,14 @@
     };
 
     Bjax.prototype.updateUrl = function () {
-        if (this.data['replace'] === true){
+        if (this.data.replace === true){
             try {
-                window.history.pushState({}, '', this.data['url']);
+                window.history.pushState({
+                    path: window.location.href
+                }, '', this.data.url);
             } catch(e) {
+                console.error('history.pushState failed, maybe HTML5 is not supported?')
+                console.error(e.stack);
                 window.location.replace(this.data['url']);
             }
         }
@@ -133,7 +138,6 @@
             document.write(content);
             document.close();
         }
-        document.title = $(content).filter('title').text();
     };
 
     Bjax.PercentLoader = function (target) {
@@ -195,6 +199,20 @@
         });
         return this;
     };
+
+    $(window).bind('popstate', function(event) {
+        var state = event.originalEvent.state;
+        if (state) {
+            new Bjax({
+                'url': state.path,
+                'replace': false
+            });
+        }
+    });
+
+    history.replaceState({
+        path: window.location.href
+    }, '');
 
     window.Bjax = Bjax;
 })(window);
