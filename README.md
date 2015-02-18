@@ -56,6 +56,7 @@ element | html | String | Element to load
 target_attribute | data-target | String | Target attribute
 target | html | String | Load target
 
+Bind bjax manually:
 ## API `Bjax`
 
 You can instantiate the Bjax also through a classic way:
