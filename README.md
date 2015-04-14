@@ -1,4 +1,4 @@
-# Welcome to Bjax 1.0.0
+# Welcome to Bjax 1.0.1
 
 Ajax link system for modern website. Convert any link in your page to ajax link.
 
