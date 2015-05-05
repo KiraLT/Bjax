@@ -1,0 +1,40 @@
+{
+  "name": "bjax",
+  "title": "Bjax",
+  "description": "Ajax link system for modern website. Convert any link in your page to ajax link.",
+  "version": "1.0.2",
+  "keywords": [
+    "jquery",
+    "ajax",
+    "link",
+    "links",
+    "system",
+    "modern"
+  ],
+  "homepage": "https://github.com/KiraLT/Bjax",
+  "author": {
+    "name": "KiraLT",
+    "url": "https://github.com/KiraLT"
+  },
+  "licenses": [
+    {
+      "type": "GNU",
+      "url": "https://github.com/KiraLT/Bjax/blob/master/LICENSE"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/KiraLT/Bjax.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KiraLT/Bjax/issues"
+  },
+  "main": [
+    "bjax.min.css",
+    "bjax.min.js"
+  ],
+  "dependencies": {
+    "jQuery": "*",
+    "history.js": "*"
+  }
+}
