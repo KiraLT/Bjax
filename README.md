@@ -1,4 +1,4 @@
-# Welcome to Bjax 1.0.1
+# Welcome to Bjax 1.0.2
 
 Ajax link system for modern website. Convert any link in your page to ajax link.
 
@@ -17,6 +17,8 @@ Demo online: http://bjax.6te.net/demo/
 
 ## Usage
 
+### Install manually
+
 Download the latest version: https://github.com/KiraLT/Bjax/releases
 
 Link to the JS file:
@@ -31,6 +33,7 @@ Add the CSS file (or append contents to your own stylesheet):
 <link href="bjax.min.css" rel="stylesheet" type="text/css" />
 ```
 
+### Install manually
 To initialize:
 
 ```javascript
