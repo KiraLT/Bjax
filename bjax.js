@@ -37,7 +37,7 @@
         this.execute();
     };
 
-    Bjax.VERSION = '1.0.1';
+    Bjax.VERSION = '1.0.2';
     Bjax.defaults = {
         'url_attribute': [
             'data-href',
