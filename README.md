@@ -17,9 +17,15 @@ Demo online: http://bjax.6te.net/demo/
 
 ## Usage
 
-### Install manually
+### Download manually
 
 Download the latest version: https://github.com/KiraLT/Bjax/releases
+
+### Download using Bower
+
+```
+bower install git://github.com/KiraLT/Bjax.git
+```
 
 Link to the JS file:
 
@@ -33,7 +39,6 @@ Add the CSS file (or append contents to your own stylesheet):
 <link href="bjax.min.css" rel="stylesheet" type="text/css" />
 ```
 
-### Install manually
 To initialize:
 
 ```javascript
