@@ -34,7 +34,6 @@
     "bjax.min.js"
   ],
   "dependencies": {
-    "jQuery": "*",
-    "history.js": "*"
+    "jQuery": "*"
   }
 }
