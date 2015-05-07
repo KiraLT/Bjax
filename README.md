@@ -42,7 +42,7 @@ Add the CSS file (or append contents to your own stylesheet):
 To initialize:
 
 ```javascript
-// bind on data-bjax attrobites (recommended)
+// bind on data-bjax attributes (recommended)
 $('[data-bjax]').bjax();
 
 // bind on each link
