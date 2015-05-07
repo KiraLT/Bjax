@@ -24,7 +24,7 @@ Download the latest version: https://github.com/KiraLT/Bjax/releases
 ### Download using Bower
 
 ```
-bower install git://github.com/KiraLT/Bjax.git
+bower install bjax
 ```
 
 Link to the JS file:
