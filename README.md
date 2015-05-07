@@ -154,3 +154,8 @@ Onclick attribute
 ```html
 <a href="content.html" onclick="new Bjax(this); return false;">Link</a>
 ```
+
+## Feature plans
+
+* No jQuery dependency
+* HTML4 support
