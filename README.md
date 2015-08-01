@@ -159,3 +159,7 @@ Onclick attribute
 
 * No jQuery dependency
 * HTML4 support
+* More animations
+* Event system
+* Easier customization
+* Ajax forms with Bjax
