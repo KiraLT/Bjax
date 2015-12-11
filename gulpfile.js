@@ -15,6 +15,7 @@ gulp.task('bower', function() {
 gulp.task('js', function() {
     return gulp.src('src/*.js')
         .pipe(concat('bjax.js'))
+        .pipe(gulp.dest('dist'))
         .pipe(uglify())
         .pipe(rename('bjax.min.js'))
         .pipe(gulp.dest('dist'));
@@ -23,6 +24,7 @@ gulp.task('js', function() {
 gulp.task('css', function() {
     return gulp.src('src/*.css')
         .pipe(concat('bjax.css'))
+        .pipe(gulp.dest('dist'))
         .pipe(minifyCss())
         .pipe(rename('bjax.min.css'))
         .pipe(gulp.dest('dist'));
@@ -32,6 +34,7 @@ gulp.task('sass', function() {
     return gulp.src('src/*.scss')
         .pipe(concat('bjax.css'))
         .pipe(sass())
+        .pipe(gulp.dest('dist'))
         .pipe(minifyCss())
         .pipe(rename('bjax.min.css'))
         .pipe(gulp.dest('dist'));

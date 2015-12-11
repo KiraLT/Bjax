@@ -10,14 +10,17 @@
     background-color: #fff;
     color: #788188;
 }
+
 .bjax-bar {
     border-top: 1px solid #eaeef1;
     border-width: 2px;
     border-color: #60bed1;
+
+    &.bjax-bar-error {
+      border-color: #d9534f;
+    }
 }
-.bjax-bar.bjax-bar-error {
-    border-color: #d9534f;   
-}
+
 .bjax-backdrop-error {
     display: block;
     top: 0;
