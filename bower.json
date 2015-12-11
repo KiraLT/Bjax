@@ -30,10 +30,15 @@
     "url": "https://github.com/KiraLT/Bjax/issues"
   },
   "main": [
-    "bjax.min.css",
-    "bjax.min.js"
+    "dist/bjax.min.css",
+    "dist/bjax.min.js"
   ],
   "dependencies": {
     "jQuery": "*"
-  }
+    },
+  "ignore": [
+    "*.md",
+    "gruntfile.js",
+    "package.json"
+  ]
 }

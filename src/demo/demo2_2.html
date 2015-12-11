@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css">
+        <link rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css">
+        <link rel="stylesheet" href="../bjax.min.css">
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js" type="text/javascript"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script src="../bjax.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function() {
+            $('[data-bjax]').bjax();
+            prettyPrint();
+          });
+        </script>
+    </head>
+    <body>
+
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="index.html" data-bjax>Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Demos <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="demo1.html" data-bjax>Convert all links</a></li>
+                <li class="active"><a href="javascript:void(0)">Load part of page</a></li>
+                <li><a href="demo3.html" data-bjax>Don't change URL</a></li>
+                <li><a href="demo4.html" data-bjax>Convert specific links</a></li>
+                <li><a href="demo5.html" data-bjax>Manually usage</a></li>
+                <li><a href="demo6.html" data-bjax>Bind manually</a></li>
+              </ul>
+            </li>
+            <li role="presentation"><a href="https://github.com/KiraLT/Bjax">GitGub</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Bjax demo page</h3>
+      </div>
+
+      <div class="jumbotron">
+        <p>Load a part of page.</p>
+        <p class="text-left">
+          <small>JavaScript (add to page HEAD):</small>
+        </p>
+        <pre class="prettyprint well text-left">$('data-bjax').bjax();</pre>
+        <p class="text-left">
+          <small>Example HTML:</small>
+        </p>
+        <pre class="prettyprint well text-left">&lt;div id=&quot;content&quot;&gt;
+  &lt;p&gt;
+    Content 2.
+  &lt;/p&gt;
+  &lt;a href=&quot;content1.html&quot; data-target=&quot;#content&quot; data-el=&quot;#content&quot; data-bjax&gt;Click To Load Content Here&lt;/a&gt;
+&lt;/div&gt;</pre>
+        <p class="text-left">
+          <small>Example target HTML:</small>
+        </p>
+        <pre class="prettyprint well text-left">&lt;div id=&quot;content&quot;&gt;
+  &lt;p&gt;
+    Content 1.
+  &lt;/p&gt;
+  &lt;a href=&quot;content2.html&quot; data-target=&quot;#content&quot; data-el=&quot;#content&quot; data-bjax&gt;Click To Load Content Here&lt;/a&gt;
+&lt;/div&gt;</pre>
+        <p>
+          DEMO
+        </p>
+        <div id="content">
+          <p>
+            Content 2.
+          </p>
+          <a href="demo2.html" data-bjax data-target="#content" data-el="#content">Click To Load Content Here</a>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; Bjax 2015</p>
+      </footer>
+
+    </div> <!-- /container -->
+    </body>
+</html>

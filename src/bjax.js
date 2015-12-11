@@ -33,7 +33,7 @@
             this.loadElement(element);
         }
         this.loadData();
-        this.loader = new Bjax.Loader($(this.data['target']));
+        this.loader = new Bjax.Loader(this.data['target']);
         this.execute();
     };
 
@@ -105,8 +105,12 @@
                     document.title = $(content).filter('title').text();
                 });
             },
-            error: function() {
-                self.loader.error(2000, function() {
+            error: function(xhr, ajaxOptions, thrownError) {
+                var errorText = 'Error occurred, retrying. Click anywhere to exit.';
+                if (xhr.state() === 'rejected') {
+                    var errorText = 'Gone offline, retrying. Click anywhere to exit.';
+                }
+                self.loader.error(2000, errorText, function() {
                     self.execute();
                 });
             }
@@ -141,7 +145,7 @@
     };
 
     Bjax.PercentLoader = function (target) {
-        this.target = target;
+        this.target = $(target);
         this.backdrop = $('<div class="bjax-backdrop"></div>');
         this.bar = $('<div class="bjax-bar"></div>');
         this.err = $('<div class="bjax-backdrop-error"></div>');
@@ -173,12 +177,12 @@
         });
     };
 
-    Bjax.PercentLoader.prototype.error = function (waittime, callback){
+    Bjax.PercentLoader.prototype.error = function (waittime, errorText, callback){
         var self = this;
         this.bar.stop();
         this.bar.width(0);
         this.bar.addClass('bjax-bar-error');
-        this.err.text('Error occurred, retrying. Click anywhere to exit.');
+        this.err.text(errorText);
         this.bar.animate({
             width: '100%'
         }, waittime, 'linear', function() {

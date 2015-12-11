@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css">
+        <link rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css">
+        <link rel="stylesheet" href="../bjax.min.css">
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js" type="text/javascript"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script src="../bjax.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function() {
+            $('[data-bjax]').bjax();
+            prettyPrint();
+          });
+        </script>
+    </head>
+    <body>
+
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="javascript:void(0)">Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Demos <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="demo1.html" data-bjax>Convert all links</a></li>
+                <li><a href="demo2.html" data-bjax>Load part of page</a></li>
+                <li><a href="demo3.html" data-bjax>Don't change URL</a></li>
+                <li><a href="demo4.html" data-bjax>Convert specific links</a></li>
+                <li><a href="demo5.html" data-bjax>Manually usage</a></li>
+                <li><a href="demo6.html" data-bjax>Bind manually</a></li>
+              </ul>
+            </li>
+            <li role="presentation"><a href="https://github.com/KiraLT/Bjax">GitGub</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Bjax demo page</h3>
+      </div>
+
+      <div class="jumbotron" id="signup">
+        <p>
+          Download the latest version: <a href="https://github.com/KiraLT/Bjax/releases">https://github.com/KiraLT/Bjax/releases</a>
+        </p>
+        <p class="text-left">
+          <small>Link to the JS file:</small>
+        </p>
+        <pre class="prettyprint well text-left">&lt;script src=&quot;bjax.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</pre>
+        <p class="text-left">
+          <small>Add the CSS file (or append contents to your own stylesheet):</small>
+        </p>
+        <pre class="prettyprint well text-left">&lt;link href=&quot;bjax.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</pre>
+      </div>
+
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4><a href="demo1.html" data-bjax>Convert all links</a></h4>
+          <p>With one line code convert all links to Bjax.</p>
+
+          <h4><a href="demo2.html" data-bjax>Load part of page</a></h4>
+          <p>Load only part of other page with Bjax.</p>
+
+          <h4><a href="demo3.html" data-bjax>Don't change URL</a></h4>
+          <p>Load page or part of page but don't change URL.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <h4><a href="demo4.html" data-bjax>Convert specific links</a></h4>
+          <p>Convert only specific links to Bjax.</p>
+
+          <h4><a href="demo5.html" data-bjax>Manually usage</a></h4>
+          <p>Use Bjax without links.</p>
+
+          <h4><a href="demo6.html" data-bjax>Bind manually</a></h4>
+          <p>Bind Bjax manually.</p>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; Bjax 2015</p>
+      </footer>
+
+    </div> <!-- /container -->
+    </body>
+</html>
