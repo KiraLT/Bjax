@@ -155,6 +155,13 @@ Onclick attribute
 <a href="content.html" onclick="new Bjax(this); return false;">Link</a>
 ```
 
+## In progress
+
+* Gulp
+* Typescript
+* SASS
+* Easier customization
+
 ## Feature plans
 
 * No jQuery dependency
