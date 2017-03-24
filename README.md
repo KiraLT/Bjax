@@ -155,22 +155,6 @@ Onclick attribute
 <a href="content.html" onclick="new Bjax(this); return false;">Link</a>
 ```
 
-## In progress
-
-* Gulp
-* Typescript
-* SASS
-* Easier customization
-
-## Feature plans
-
-* No jQuery dependency
-* HTML4 support
-* More animations
-* Event system
-* Easier customization
-* Ajax forms with Bjax
-
 # Bjax 2.0.0 (coming soon)
 
 ## Links
@@ -222,3 +206,9 @@ Bjax.registerLoader('modern', MyModernLoader);
 ```
 
 *More customization*
+
+## Custom builds
+
+* jQuery
+* zepto.js
+* vanillaJS
