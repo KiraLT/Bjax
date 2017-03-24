@@ -170,3 +170,55 @@ Onclick attribute
 * Event system
 * Easier customization
 * Ajax forms with Bjax
+
+# Bjax 2.0.0 (coming soon)
+
+## Links
+```js
+new Bjax($('#my_a'), {
+  'target': '#content',
+  'element': '#content',
+  'loader': 'default'
+});
+```
+
+## Forms
+
+```js
+new Bjax($('#my_form'), {
+  'target': '#content',
+  'element': '#content',
+  'method': 'post',
+  'loader': 'default'
+});
+```
+
+## Events
+
+```js
+var bjax = new Bjax($('#my_a'));
+bjax.on('loader:start', function() {
+    $('body').addClass('dim')
+}).on('loader:end', function() {
+    $('body').removeClass('dim')
+});
+```
+
+## Custom rendering
+
+```js
+new Bjax($('#my_a'), {
+  'target': '#content',
+  'element': '#content'
+}).on('render', function(content) {
+    return '<b>' + content + '</b>';
+})
+```
+
+## Custom loaders
+
+```js
+Bjax.registerLoader('modern', MyModernLoader);
+```
+
+*More customization*
