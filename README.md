@@ -1,4 +1,4 @@
-# Welcome to Bjax 1.0.2
+# Welcome to Bjax 2.0
 
 Ajax link system for modern website. Convert any link in your page to ajax link.
 
@@ -159,6 +159,14 @@ Onclick attribute
 
 ## Links
 ```js
+const bjaxLinks = new BjaxLinks({
+    defaults: {
+
+    },
+})
+
+bjaxLinks.bind()
+
 new Bjax($('#my_a'), {
   'target': '#content',
   'element': '#content',
