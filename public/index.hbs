@@ -3,6 +3,32 @@
 <div class="center-container">
     <h1>Welcome to Bjax</h1>
     <p class="lead">Ajax link system for modern website. Convert any link in your page to ajax link.</p>
+    Find more on <a href="https://github.com/KiraLT/Bjax" target="_blank">GitHub</a>
 </div>
 
+<h4>
+    Bind Bjax on all links:
+</h4>
+
+<strong>Javascript:</strong>
+<pre class="border border-success rounded p-3"><code>Bjax.bindLinks('a')</code></pre>
+<strong>HTML:</strong>
+<pre class="border border-success rounded p-3"><code>&lt;a href="/"&gt;Go to home&lt;/a&gt;</code></pre>
+
+<h4>
+    Bind Bjax on data-bjax attribute:
+</h4>
+<strong>Javascript:</strong>
+<pre class="border border-success rounded p-3"><code>Bjax.bindLinks('[data-bjax]')</code></pre>
+<strong>HTML:</strong>
+<pre class="border border-success rounded p-3"><code>&lt;a href="/" data-bjax&gt;Go to home&lt;/a&gt;</code></pre>
+
+<h4>
+    Call manually:
+</h4>
+<strong>HTML:</strong>
+<pre class="border border-success rounded p-3"><code>&lt;a href="/" onclick="Bjax.loadLink(this.href); return false;"&gt;Go to home&lt;/a&gt;</code></pre>
+
+
 {{> 'templates/footer'}}
+

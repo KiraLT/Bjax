@@ -2,221 +2,89 @@
 
 Ajax link system for modern website. Convert any link in your page to ajax link.
 
-Demo online: http://bjax.6te.net/demo/
-
-## Features
-
-* Converts any link to ajax link.
-* Loads whole page with ajax.
-* Loads part of page with ajax.
-
-## Requirements
-
-* jQuery.
-* HTML5 browser.
+**New V2 version on pure VanilaJS, lightweight and super fast!**
 
 ## Usage
 
-### Download manually
+### Binding links
 
-Download the latest version: https://github.com/KiraLT/Bjax/releases
-
-### Download using Bower
-
-```
-bower install bjax
-```
-
-Link to the JS file:
-
-```html
-<script src="bjax.min.js" type="text/javascript"></script>
-```
-
-Add the CSS file (or append contents to your own stylesheet):
-
-```html
-<link href="bjax.min.css" rel="stylesheet" type="text/css" />
-```
-
-To initialize:
-
-```javascript
-// bind on data-bjax attributes (recommended)
-$('[data-bjax]').bjax();
-
-// bind on each link
-$('a').bjax();
-
-// or with custom settings
-$('[data-bjax]').bjax({
-    target: '#content',
-    element: '#content'
-});
-```
-
-## Settings
-
-Key | Default | Values | Description
---- | --- | --- | ---
-url_attribute | data-href or href | String | URL attribute 
-url | undefined | String | custom url
-replace_attribute | data-replace | String | Replace attribute
-replace | true | Boolean | Change page URL after bjax load
-element_attribute | data-el | String | Element attribute
-element | html | String | Element to load
-target_attribute | data-target | String | Target attribute
-target | html | String | Load target
-
-## HTML attributes
-
-`data-target`- jQuery selector
-
-Load content to specified target.
-
-**Example HTML:**
-
-```html
-<div id="content">
-  <a href="content.html" data-target="#content" data-bjax>Load here</a>
-</div>
-```
-
-`data-el`- jQuery selector
-
-Load only specified element.
-
-**Example HTML:**
-
-```html
-<a href="content.html" data-el="#content" data-bjax>Load here</a>
-```
-
-`data-replace`- boolean
-
-Change URL after load dynamicaly.
-
-**Example HTML:**
-
-```html
-<a href="home.html" data-replace="false" data-bjax>Home</a>
-```
-
-`data-url`- string
-
-Custom load URL. Will be used instead of href attribute.
-
-**Example HTML:**
-
-```html
-<button data-url="home.html"  data-bjax>Home</button>
-```
-
-## API `Bjax`
-
-You can instantiate the Bjax also through a classic way:
-
-```javascript
-// Collect settings from element
-new Bjax($('[data-bjax']));
-
-// Set settings manually
-new Bjax({
-  'target': '#target',
-  'element': '#element',
-  'url': '/page'
-});
-
-// Mixed
-new Bjax($('[data-bjax']), {
-  'target': '#target',
-  'element': '#element'
-});
-```
-
-Bind bjax manually:
-
-```javascript
-$('[data-bjax]').on('click', function(e){
-    new Bjax(this);
-    e.preventDefault();
-});
-
-// Live bind
-$(document).on('click', '[data-bjax]', function(e){
-    new Bjax(this);
-    e.preventDefault();
-});
-```
-
-Onclick attribute
-
-```html
-<a href="content.html" onclick="new Bjax(this); return false;">Link</a>
-```
-
-# Bjax 2.0.0 (coming soon)
-
-## Links
-```js
-const bjaxLinks = new BjaxLinks({
-    defaults: {
-
-    },
-})
-
-bjaxLinks.bind()
-
-new Bjax($('#my_a'), {
-  'target': '#content',
-  'element': '#content',
-  'loader': 'default'
-});
-```
-
-## Forms
+You can conert all links to Bjax links using `bindLinks` with `a` selector.
 
 ```js
-new Bjax($('#my_form'), {
-  'target': '#content',
-  'element': '#content',
-  'method': 'post',
-  'loader': 'default'
-});
+bindLinks('a')
 ```
 
-## Events
+Or you can bind on data-bjax selector.
 
 ```js
-var bjax = new Bjax($('#my_a'));
-bjax.on('loader:start', function() {
-    $('body').addClass('dim')
-}).on('loader:end', function() {
-    $('body').removeClass('dim')
-});
+bindLinks('data-bjax')
 ```
 
-## Custom rendering
+### Manually loading
+
+You can load link manually using `loadLink` function.
 
 ```js
-new Bjax($('#my_a'), {
-  'target': '#content',
-  'element': '#content'
-}).on('render', function(content) {
-    return '<b>' + content + '</b>';
+loadLink('https://my.page/second-page', {
+    target: '#part'
 })
 ```
 
-## Custom loaders
+This will download whole page and insert it into element with `part` ID.
+
+### Bind manually
+
+Using `liveBind` and `loadLink` you can customize bindings as much as you wish.
 
 ```js
-Bjax.registerLoader('modern', MyModernLoader);
+liveBind('[data-bjax]', 'click', function(event, element) {
+    event.preventDefault()
+    if (element instanceof HTMLAnchorElement) {
+        loadLink(element.href, {
+            selector: '#container'
+        })
+    }
+})
 ```
 
-*More customization*
+## Funtions
 
-## Custom builds
+If you are using browser build, all these funtions are accessable using `window.Bjax` object.
 
-* jQuery
-* zepto.js
-* vanillaJS
+### loadLink(url, [options])
+
+Downloads page from `url` and update current page acording downloaded. 
+
+```js
+loadLink('https://my.page/second-page')
+```
+
+*Options:*
+
+* `target` - DOM selector where should be inserted downloaded page HTML (default is `body`).
+* `source` - DOM selected which indicates which part from downloaded page should be extracted (default is `body`).
+* `shouldUpdateUrl` - indicates if the url should be updated using `url` parameter using `pushState` (default is `true`).
+* `loader` - custom loader instance (default is empty loader - `{}`).
+* `successCallback` - callback which is called if the function finished the work without an error.
+* `errorCallback` - Callback which is called if the function had an error and failed to finish.
+
+### bindLinks(selector, [options])
+
+Binds `loadLink` funtion on given `selector` using `liveBind`.
+
+```js
+bindLinks('a[data-bjax]')
+```
+
+**Supports all `loadLink` options.**
+
+*Additional options:*
+
+* url - target page URL, default is `undefined` and `urlAttribute` parameter is used.
+* urlAttribute - `url` parameter value, which is taken from clicked element (default is `href`).
+* targetAttribute - `target` parameter value, which is taken from clicked element (default is `data-target`).
+* sourceAttribute - `source` parameter value, which is taken from clicked element (default is `data-source`).
+
+### liveBind(target, eventName, callback)
+
+Listens `eventName` events on `window` object. Because it binds on `window` object, you can change inner DOM and it won't effect this bind at all.

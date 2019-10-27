@@ -7,14 +7,10 @@ interface State {
     mainEl: HTMLElement
     barEl: HTMLElement
     errorEl: HTMLElement
-    interval: NodeJS.Timeout
+    interval: any
 }
 
-export class PercentLoader extends Loader<State> {
-    constructor() {
-        super()
-    }
-
+export class PercentLoader implements Loader<State> {
     start({ target }: LoaderParams): State {
         const mainEl = findOrCreate(target.querySelector('.bjax-percentloader-container'), `
             <div class="bjax-percentloader-container"></div>

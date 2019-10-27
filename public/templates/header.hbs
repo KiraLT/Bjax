@@ -36,7 +36,7 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="/" data-bjax>Bjax</a>
+        <a class="navbar-brand" href="/" data-bjax data-selector="#main">Bjax</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,13 +44,10 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/" data-bjax>Home</a>
+                    <a class="nav-link" href="/" data-bjax data-selector="#main">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/demo1/" data-bjax>Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="/part/" data-bjax data-selector="#main">Load a part of page</a>
                 </li>
             </ul>
         </div>

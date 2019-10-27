@@ -1,0 +1,47 @@
+{{> 'templates/header' title='Load a part of page'}}
+
+<h1>Load a part of page</h1>
+
+<p class="lead">You can load a part of page using target or source attributes, or just selector attribute.</p>
+
+<h4>
+    JavaScript:
+</h4>
+
+<pre class="border border-success rounded p-3"><code>Bjax.bindLinks('[data-bjax]')</code></pre>
+
+<h4>
+    Example HTML of <a href="/content1/" target="_blank">/content1/</a> page:
+</h4>
+
+<pre class="border border-success rounded p-3"><code>&lt;div id="part"&gt;
+  &lt;p&gt;
+    Content 1.
+  &lt;/p&gt;
+  &lt;a href="/content2/" data-selector="#part" data-bjax&gt;Click To Load Content Here&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+
+<h4>
+    Example target HTML of <a href="/content2/" target="_blank">/content2/</a> page:
+</h4>
+
+<pre class="border border-success rounded p-3"><code>&lt;div id="part"&gt;
+  &lt;p&gt;
+    Content 2.
+  &lt;/p&gt;
+  &lt;a href="/content1/" data-selector="#part" data-bjax&gt;Click To Load Content Here&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+
+<h2>
+    Demo:
+</h2>
+
+
+<div id="part" class="border border-primary rounded p-3">
+    <p>
+      Content 1.
+    </p>
+    <a href="/content2/" data-selector="#part" data-bjax>Click To Load Content Here</a>
+</div>
+
+{{> 'templates/footer'}}
