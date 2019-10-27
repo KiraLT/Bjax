@@ -17,7 +17,7 @@ bindLinks('a')
 Or you can bind on data-bjax selector.
 
 ```js
-bindLinks('data-bjax')
+bindLinks('[data-bjax]')
 ```
 
 ### Loading part of a page
@@ -80,12 +80,12 @@ loadLink('https://my.page/second-page')
 
 *Options:*
 
-* `target` - DOM selector where should be inserted downloaded page HTML (default is `body`).
-* `source` - DOM selected which indicates which part from downloaded page should be extracted (default is `body`).
-* `shouldUpdateUrl` - indicates if the url should be updated using `url` parameter using `pushState` (default is `true`).
-* `loader` - custom loader instance (default is empty loader - `{}`).
-* `successCallback` - callback which is called if the function finished the work without an error.
-* `errorCallback` - Callback which is called if the function had an error and failed to finish.
+* **target** - DOM selector where should be inserted downloaded page HTML (default is `body`).
+* **source** - DOM selected which indicates which part from downloaded page should be extracted (default is `body`).
+* **shouldUpdateUrl** - indicates if the url should be updated using `url` parameter using `pushState` (default is `true`).
+* **loader** - custom loader instance (default is empty loader - `{}`).
+* **successCallback** - callback which is called if the function finished the work without an error.
+* **errorCallback** - Callback which is called if the function had an error and failed to finish.
 
 ### bindLinks(selector, [options])
 
@@ -99,10 +99,10 @@ bindLinks('a[data-bjax]')
 
 *Additional options:*
 
-* url - target page URL, default is `undefined` and `urlAttribute` parameter is used.
-* urlAttribute - `url` parameter value, which is taken from clicked element (default is `href`).
-* targetAttribute - `target` parameter value, which is taken from clicked element (default is `data-target`).
-* sourceAttribute - `source` parameter value, which is taken from clicked element (default is `data-source`).
+* **url** - target page URL, default is `undefined` and `urlAttribute` parameter is used.
+* **urlAttribute** - `url` parameter value, which is taken from clicked element (default is `href`).
+* **targetAttribute** - `target` parameter value, which is taken from clicked element (default is `data-target`).
+* **sourceAttribute** - `source` parameter value, which is taken from clicked element (default is `data-source`).
 
 ### liveBind(target, eventName, callback)
 
