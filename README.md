@@ -4,6 +4,8 @@ Ajax link system for modern website. Convert any link in your page to ajax link.
 
 Demo online: http://bjax.6te.net/demo/
 
+**V2 development in progress. VanilaJS, fast & lightweight with form support. [Check it out](https://github.com/KiraLT/Bjax/tree/v2)**
+
 ## Features
 
 * Converts any link to ajax link.
