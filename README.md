@@ -8,7 +8,7 @@ Ajax link system for modern website. Convert any link in your page to ajax link.
 
 ### Binding links
 
-You can conert all links to Bjax links using `bindLinks` with `a` selector.
+You can convert all links to Bjax links using `bindLinks` with `a` selector.
 
 ```js
 bindLinks('a')
@@ -19,6 +19,25 @@ Or you can bind on data-bjax selector.
 ```js
 bindLinks('data-bjax')
 ```
+
+### Loading part of a page
+
+You can specify `source` and `target` using data attributes: 
+
+```html
+<a href="/" data-bjax data-source="#source" data-target="#target">My link</a>
+```
+
+Or you can specify that information when binding:
+
+```js
+bindLinks('data-bjax', {
+    source: '#source',
+    target: '#target'
+})
+```
+
+Also, you can use `data-selector` attribute or `selector` parameter to specify both `target` & `source` with one parameter.
 
 ### Manually loading
 
