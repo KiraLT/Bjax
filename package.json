@@ -17,15 +17,10 @@
     "name": "KiraLT",
     "url": "https://github.com/KiraLT"
   },
-  "licenses": [
-    {
-      "type": "GNU",
-      "url": "https://github.com/KiraLT/Bjax/blob/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/KiraLT/Bjax.git"
+    "url": "https://github.com/KiraLT/Bjax.git"
   },
   "bugs": {
     "url": "https://github.com/KiraLT/Bjax/issues"
