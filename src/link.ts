@@ -12,7 +12,7 @@ export interface LoadLinkOptions {
      */
     source?: string
     /**
-     * Both `target` and `source` combined.
+     * Overwrites both `target` and `source`.
      */
     selector?: string
     /**

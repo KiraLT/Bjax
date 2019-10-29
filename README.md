@@ -97,6 +97,7 @@ loadLink('https://my.page/second-page')
 
 * **target** - DOM selector where should be inserted downloaded page HTML (default is `body`).
 * **source** - DOM selected which indicates which part from downloaded page should be extracted (default is `body`).
+* **selector** - Overwrites both `target` and `source` (default: `undefined`).
 * **shouldUpdateUrl** - indicates if the url should be updated using `url` parameter using `pushState` (default is `true`).
 * **loader** - custom loader instance (default is empty loader - `{}`).
 * **successCallback** - callback which is called if the function finished the work without an error.
@@ -118,6 +119,7 @@ bindLinks('a[data-bjax]')
 * **urlAttribute** - `url` parameter value, which is taken from clicked element (default is `href`).
 * **targetAttribute** - `target` parameter value, which is taken from clicked element (default is `data-target`).
 * **sourceAttribute** - `source` parameter value, which is taken from clicked element (default is `data-source`).
+* **selectorAttribute** - `selector` parameter value, which is taken from clicked element (default is `data-selector`).
 
 ### liveBind(target, eventName, callback)
 
