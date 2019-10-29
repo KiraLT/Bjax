@@ -1,4 +1,4 @@
-import { Loader, LoaderParams } from '../'
+import { Loader, LoaderParams, LoaderErrorParams } from '../'
 import { findOrCreate } from '../../dom'
 
 import './styles.scss'
@@ -7,7 +7,21 @@ interface State {
     mainEl: HTMLElement
     barEl: HTMLElement
     errorEl: HTMLElement
-    interval: any
+    interval: NodeJS.Timeout
+}
+
+function createPercentAnimation(callback: (progress: number) => void, finish: () => void, duration: number): NodeJS.Timeout {
+    const start = Date.now()
+    const interval = setInterval(() => {
+        const now = Date.now()
+        if (now - start >= duration) {
+            callback(100)
+            clearInterval(interval)
+        } else {
+            callback(Math.min(Math.round((now - start) / duration * 100), 100))
+        }
+    }, Math.max(30, Math.round(duration / 100)))
+    return interval
 }
 
 export class PercentLoader implements Loader<State> {
@@ -18,8 +32,8 @@ export class PercentLoader implements Loader<State> {
         const barEl = findOrCreate(target.querySelector('.bjax-percentloader-bar'), `
             <div class="bjax-percentloader-bar"></div>
         `) as HTMLElement
-        const errorEl = findOrCreate(target.querySelector('.bjax-backdrop-error'), `
-            <div class="bjax-backdrop-error"></div>
+        const errorEl = findOrCreate(target.querySelector('.bjax-percentloader-error'), `
+            <div class="bjax-percentloader-error"></div>
         `) as HTMLElement
         mainEl.appendChild(barEl)
         mainEl.appendChild(errorEl)
@@ -27,31 +41,25 @@ export class PercentLoader implements Loader<State> {
         target.style.position = 'relative'
         target.appendChild(mainEl)
 
-        const start = Date.now()
-        const duration = 500
-        const interval = setInterval(() => {
-            const now = Date.now()
-            if (now - start >= duration) {
-                barEl.style.width = '100%'
-                clearInterval(interval)
-            } else {
-                barEl.style.width = `${Math.min(Math.round((now - start) / duration * 100), 100)}%`
-            }
-        }, Math.max(30, Math.round(duration / 100)))
-
         return {
             mainEl,
             barEl,
             errorEl,
-            interval
+            interval: createPercentAnimation(progress => {
+                barEl.style.width = `${progress}%`
+            }, () => {
+
+            },500)
         }
     }
 
     finish({ target }: LoaderParams, { interval }: State) {
         clearInterval(interval)
+        target.style.position = ''
     }
 
-    error({ target }: LoaderParams, { interval, barEl }: State) {
-        barEl.className = 'bjax-percentloader-bar bjax-bar-error'
+    error({ target, error }: LoaderErrorParams, { interval, barEl, errorEl }: State) {
+        barEl.className = 'bjax-percentloader-bar bjax-percentloader-bar-error'
+        errorEl.innerHTML = error.message
     }
 }

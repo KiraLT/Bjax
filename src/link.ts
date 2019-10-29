@@ -1,6 +1,6 @@
 import { DOMTarget, find, liveBind } from './dom'
 import { Loader } from './loaders'
-import { request } from './helpers'
+import { request, RequestError } from './helpers'
 
 export interface LoadLinkOptions {
     /**
@@ -26,11 +26,11 @@ export interface LoadLinkOptions {
     /**
      * Callback which is called if the function finished the work without an error.
      */
-    successCallback?: () => void
+    successCallback?: (params: { target: HTMLElement }) => void
     /**
      * Callback which is called if the function had an error and failed to finish.
      */
-    errorCallback?: () => void
+    errorCallback?: (params: { target: HTMLElement, error: RequestError }) => void
 }
 
 const defaultLoadLinkOptions: Required<LoadLinkOptions> = {
@@ -42,6 +42,8 @@ const defaultLoadLinkOptions: Required<LoadLinkOptions> = {
     loader: {},
     selector: ''
 }
+
+let stateBinded = false
 
 export function loadLink(url: string, options?: LoadLinkOptions): void {
     const {
@@ -55,22 +57,34 @@ export function loadLink(url: string, options?: LoadLinkOptions): void {
     } = {...defaultLoadLinkOptions, ...options}
     const targetElement = find(selector ? selector : target)
     if (targetElement instanceof HTMLElement) {
+        if (!stateBinded) {
+            bindPopState()
+            stateBinded = true
+        }
+
         const loaderState = loader.start ? loader.start({
             target: targetElement
         }) : undefined
         request({ url }, content => {
             const html = document.createElement('html')
             html.innerHTML = content
-            const sourceElement = html.querySelector(selector ? source : selector)
-            const titleElement = html.querySelector('title')
-            const title = titleElement ? titleElement.innerHTML : document.title
+            const sourceElement = html.querySelector(selector ? selector : source)
+
             if (sourceElement instanceof HTMLElement) {
                 targetElement.innerHTML = sourceElement.innerHTML
             }
+
+            const titleElement = html.querySelector('title')
+            document.title = titleElement ? titleElement.innerHTML : document.title
+
             if (shouldUpdateUrl) {
                 try {
-                    history.pushState(null, title, url)
-                    document.title = title
+                    history.pushState({
+                        bjaxLink: {
+                            url,
+                            loader
+                        },
+                    }, document.title, url)
                 } catch (error) {
                     console.warn(`Failed to update URL: ${error}`)
                 }
@@ -80,16 +94,43 @@ export function loadLink(url: string, options?: LoadLinkOptions): void {
                     target: targetElement
                 }, loaderState)
             }
-            successCallback()
-        }, () => {
+            successCallback({
+                target: targetElement
+            })
+        }, (error) => {
             if (loader.error) {
                 loader.error({
-                    target: targetElement
+                    error,
+                    target: targetElement,
                 }, loaderState)
             }
-            errorCallback()
+            errorCallback({
+                error,
+                target: targetElement
+            })
         })
+    } else {
+        console.error('loadLink target not found')
     }
+}
+
+function bindPopState(): void {
+    window.addEventListener('popstate', event => {
+        const data = event.state
+        console.log(data)
+        if (data.bjaxLink) {
+            loadLink(data.bjaxLink.url, {
+                shouldUpdateUrl: false,
+                loader: data.bjaxLink.loader
+            })
+        }
+    }, false)
+    history.replaceState({
+        bjaxLink: {
+            url: location.href,
+            loader: defaultLoadLinkOptions.loader
+        }
+    }, '')
 }
 
 export interface BindLinksOptions extends LoadLinkOptions {
@@ -116,18 +157,15 @@ export interface BindLinksOptions extends LoadLinkOptions {
 }
 
 const defaultBindLinksOptions: Required<BindLinksOptions> = {
-    loader: {},
+    ...defaultLoadLinkOptions,
     url: '',
     urlAttribute: 'href',
     target: '',
     targetAttribute: 'data-target',
     source: '',
-    selector: '',
-    selectorAttribute: 'data-selector',
     sourceAttribute: 'data-source',
-    shouldUpdateUrl: true,
-    successCallback: () => {},
-    errorCallback: () => {},
+    selector: '',
+    selectorAttribute: 'data-selector'
 }
 
 export function bindLinks(selector: DOMTarget, options?: BindLinksOptions): void {
@@ -156,7 +194,7 @@ export function bindLinks(selector: DOMTarget, options?: BindLinksOptions): void
             })
             event.preventDefault()
         } else {
-            console.warn('Clicked element does not have valid URL')
+            console.error('Clicked element does not have valid URL')
         }
     })
 }

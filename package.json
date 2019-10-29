@@ -1,15 +1,16 @@
 {
-  "name": "bjax",
+  "name": "@kiralt/bjax",
   "title": "Bjax",
-  "description": "Bjax",
-  "version": "2.0.0",
+  "description": "Ajax link system for modern website. Convert any link in your page to ajax link.",
+  "version": "2.0.0-alpha.1",
   "keywords": [
     "ajax",
     "bjax",
     "link",
     "links",
     "system",
-    "modern"
+    "modern",
+    "vanilla js"
   ],
   "homepage": "https://github.com/KiraLT/Bjax",
   "author": {
@@ -29,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/KiraLT/Bjax/issues"
   },
-  "main": "dist/bjax.min.js",
+  "main": "lib/index.js",
   "dependencies": {},
   "devDependencies": {
     "@webpack-cli/init": "^0.2.2",
@@ -48,8 +49,10 @@
     "webpack-dev-server": "^3.8.1"
   },
   "scripts": {
-    "build": "webpack",
+    "build-demo": "BUILD_DEMO=true webpack",
+    "build-dist": "webpack",
     "build-lib": "tsc",
-    "start": "webpack-dev-server"
+    "build": "npm run build-demo && npm run build-dist && npm run build-lib",
+    "start": "BUILD_DEMO=true webpack-dev-server"
   }
 }

@@ -1,48 +1,24 @@
 const path = require('path');
-const webpack = require('webpack');
 const fs = require('fs');
-
-/*
- * SplitChunksPlugin is enabled by default and replaced
- * deprecated CommonsChunkPlugin. It automatically identifies modules which
- * should be splitted of chunk by heuristics using module duplication count and
- * module category (i. e. node_modules). And splits the chunks…
- *
- * It is safe to remove "splitChunks" from the generated configuration
- * and was added as an educational example.
- *
- * https://webpack.js.org/plugins/split-chunks-plugin/
- *
- */
-
+const process = require('process');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-/*
- * We've enabled HtmlWebpackPlugin for you! This generates a html
- * page for you when you compile webpack, which will make you start
- * developing and prototyping faster.
- *
- * https://github.com/jantimon/html-webpack-plugin
- *
- */
-
 module.exports = {
-	mode: 'development',
+	mode: process.env.BUILD_DEMO ? 'development' : 'production',
 
-	entry: {
-		demo: './src/entries/demo.ts',
+	entry: process.env.BUILD_DEMO ? './src/entries/demo.ts' : {
+		full: './src/entries/full.ts'
 	},
 
 	output: {
-		filename: '[name].[chunkhash].js',
-		path: path.resolve(__dirname, 'dist')
+		filename: 'bjax.[name].js',
+		path: path.resolve(__dirname, process.env.BUILD_DEMO ? 'demo' : 'dist')
 	},
 
-	plugins: fs.readdirSync(path.resolve(__dirname, 'public')).filter(v => fs.lstatSync(path.resolve(__dirname, 'public', v)).isFile()).map(v => new HtmlWebpackPlugin({
-				template: path.resolve(__dirname, 'public', v),
-				filename: v.replace(/\.[^/.]+$/, '') !== 'index' ? `./${v.replace(/\.[^/.]+$/, '')}/index.html` : 'index.html'
-			})
-	),
+	plugins: process.env.BUILD_DEMO ? fs.readdirSync(path.resolve(__dirname, 'public')).filter(v => fs.lstatSync(path.resolve(__dirname, 'public', v)).isFile()).map(v => new HtmlWebpackPlugin({
+		template: path.resolve(__dirname, 'public', v),
+		filename: v.replace(/\.[^/.]+$/, '') !== 'index' ? `./${v.replace(/\.[^/.]+$/, '')}/index.html` : 'index.html'
+	})): [],
 
 	module: {
 		rules: [
@@ -65,26 +41,6 @@ module.exports = {
 				],
 			}
 		]
-	},
-
-	optimization: {
-		splitChunks: {
-			cacheGroups: {
-				vendors: {
-					priority: -10,
-					test: /[\\/]node_modules[\\/]/
-				}
-			},
-
-			chunks: 'async',
-			minChunks: 1,
-			minSize: 30000,
-			name: true
-		}
-	},
-
-	devServer: {
-		open: true
 	},
 
 	resolve: {

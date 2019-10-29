@@ -4,9 +4,9 @@
     "moduleResolution": "node",
     "module": "es6",
     "target": "es5",
-    "allowJs": true,
     "strict": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "declaration": true
   },
   "include": [
     "./src/**/*.ts"
