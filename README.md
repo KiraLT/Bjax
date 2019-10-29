@@ -4,6 +4,23 @@ Ajax link system for modern website. Convert any link in your page to ajax link.
 
 **New V2 version on pure VanilaJS, lightweight and super fast!**
 
+## Install
+
+### NPM
+
+```shell
+npm install @kiralt/bjax
+```
+
+### Browser
+
+```html
+<script src="https://unpkg.com/@kiralt/bjax/dist/bjax.full.js"></script>
+```
+
+In browser build, all funtions will be exported on `window.Bjax`.
+
+
 ## Usage
 
 ### Binding links
@@ -66,13 +83,11 @@ liveBind('[data-bjax]', 'click', function(event, element) {
 })
 ```
 
-## Funtions
-
-If you are using browser build, all these funtions are accessable using `window.Bjax` object.
+## Functions
 
 ### loadLink(url, [options])
 
-Downloads page from `url` and update current page acording downloaded. 
+Downloads page from `url` and updates current page using downloaded HTML. 
 
 ```js
 loadLink('https://my.page/second-page')
