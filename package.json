@@ -2,7 +2,7 @@
   "name": "@kiralt/bjax",
   "title": "Bjax",
   "description": "Ajax link system for modern website. Convert any link in your page to ajax link.",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "keywords": [
     "ajax",
     "bjax",
@@ -48,6 +48,7 @@
     "build-dist": "webpack",
     "build-lib": "tsc",
     "build": "npm run build-demo && npm run build-dist && npm run build-lib",
-    "start": "BUILD_DEMO=true webpack-dev-server"
+    "start": "BUILD_DEMO=true webpack-dev-server",
+    "publish": "npm publish --access public"
   }
 }

@@ -1,8 +1,6 @@
 import { Loader, LoaderParams, LoaderErrorParams } from '../'
 import { findOrCreate } from '../../dom'
 
-import './styles.scss'
-
 interface State {
     mainEl: HTMLElement
     barEl: HTMLElement

@@ -1,6 +1,5 @@
 /// <reference types="node" />
 import { Loader, LoaderParams, LoaderErrorParams } from '../';
-import './styles.scss';
 interface State {
     mainEl: HTMLElement;
     barEl: HTMLElement;

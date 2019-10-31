@@ -1,1 +1,1 @@
-export {};
+import '../loaders/percent/styles.css';
