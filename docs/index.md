@@ -20,6 +20,9 @@ npm install @kiralt/bjax
 
 In browser build, all funtions will be exported on `window.Bjax`.
 
+## Examples
+
+* [Bind links](./bind-links/)
 
 ## Usage
 
