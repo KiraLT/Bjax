@@ -68,9 +68,9 @@ export function liveBind<K extends keyof HTMLElementEventMap>(
     window.addEventListener(eventName, event => {
         const eventTarget = event.target
         if (eventTarget instanceof HTMLElement) {
-            const el = [eventTarget, ...parents(eventTarget)].find((v) =>
+            const el = [eventTarget, ...parents(eventTarget)].filter((v) =>
                 typeof target === 'string' ? matches(v, target) : target === v
-            )
+            )[0]
             if (el instanceof HTMLElement) {
                 callback(event as HTMLElementEventMap[K], el)
             }

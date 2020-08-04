@@ -1,10 +1,9 @@
-/// <reference types="node" />
 import { Loader, LoaderParams, LoaderErrorParams } from '../';
 interface State {
     mainEl: HTMLElement;
     barEl: HTMLElement;
     errorEl: HTMLElement;
-    interval: NodeJS.Timeout;
+    interval: number;
 }
 export declare class PercentLoader implements Loader<State> {
     start({ target }: LoaderParams): State;

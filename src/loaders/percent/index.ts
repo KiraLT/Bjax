@@ -5,10 +5,10 @@ interface State {
     mainEl: HTMLElement
     barEl: HTMLElement
     errorEl: HTMLElement
-    interval: NodeJS.Timeout
+    interval: number
 }
 
-function createPercentAnimation(callback: (progress: number) => void, finish: () => void, duration: number): NodeJS.Timeout {
+function createPercentAnimation(callback: (progress: number) => void, finish: () => void, duration: number): number {
     const start = Date.now()
     const interval = setInterval(() => {
         const now = Date.now()
